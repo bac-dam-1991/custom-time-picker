@@ -2,7 +2,7 @@
 	"name": "react-playground",
 	"version": "0.1.0",
 	"private": true,
-	"homepage": "http://yuribenjamin.github.io/my-app",
+	"homepage": "http://bac-dam-1991.github.io/custom-time-picker",
 	"dependencies": {
 		"clsx": "^1.1.1",
 		"react": "^17.0.2",
