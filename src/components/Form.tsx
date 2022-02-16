@@ -19,8 +19,7 @@ export const Form = ({
 			className={clsx(
 				styles['form-root'],
 				styles[`form-root_${direction}`],
-				styles['form-standard'],
-				styles['form-center']
+				styles['form-standard']
 			)}
 		>
 			{children}
