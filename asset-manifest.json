@@ -1,15 +1,17 @@
 {
   "files": {
-    "main.css": "/custom-time-picker/static/css/main.8feeecab.css",
-    "main.js": "/custom-time-picker/static/js/main.c658de14.js",
+    "main.css": "/custom-time-picker/static/css/main.93918e32.css",
+    "main.js": "/custom-time-picker/static/js/main.18a738e6.js",
     "static/js/787.4880d76a.chunk.js": "/custom-time-picker/static/js/787.4880d76a.chunk.js",
+    "static/media/ship-steering-wheel.svg": "/custom-time-picker/static/media/ship-steering-wheel.13dd47ad73eddecbf6979d0d37466616.svg",
     "index.html": "/custom-time-picker/index.html",
-    "main.8feeecab.css.map": "/custom-time-picker/static/css/main.8feeecab.css.map",
-    "main.c658de14.js.map": "/custom-time-picker/static/js/main.c658de14.js.map",
+    "static/media/circled-check.svg": "/custom-time-picker/static/media/circled-check.4f475a92855f7ddce4637cbef70952bf.svg",
+    "main.93918e32.css.map": "/custom-time-picker/static/css/main.93918e32.css.map",
+    "main.18a738e6.js.map": "/custom-time-picker/static/js/main.18a738e6.js.map",
     "787.4880d76a.chunk.js.map": "/custom-time-picker/static/js/787.4880d76a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8feeecab.css",
-    "static/js/main.c658de14.js"
+    "static/css/main.93918e32.css",
+    "static/js/main.18a738e6.js"
   ]
 }
