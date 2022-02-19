@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/custom-time-picker/static/css/main.93918e32.css",
-    "main.js": "/custom-time-picker/static/js/main.a5e7150b.js",
-    "static/js/787.4880d76a.chunk.js": "/custom-time-picker/static/js/787.4880d76a.chunk.js",
-    "static/media/ship-steering-wheel.svg": "/custom-time-picker/static/media/ship-steering-wheel.13dd47ad73eddecbf6979d0d37466616.svg",
-    "index.html": "/custom-time-picker/index.html",
-    "static/media/circled-check.svg": "/custom-time-picker/static/media/circled-check.4f475a92855f7ddce4637cbef70952bf.svg",
-    "main.93918e32.css.map": "/custom-time-picker/static/css/main.93918e32.css.map",
-    "main.a5e7150b.js.map": "/custom-time-picker/static/js/main.a5e7150b.js.map",
-    "787.4880d76a.chunk.js.map": "/custom-time-picker/static/js/787.4880d76a.chunk.js.map"
+    "main.css": "/portfolio/static/css/main.599092cf.css",
+    "main.js": "/portfolio/static/js/main.dbc4c8c6.js",
+    "static/js/787.4880d76a.chunk.js": "/portfolio/static/js/787.4880d76a.chunk.js",
+    "static/media/ship-steering-wheel.svg": "/portfolio/static/media/ship-steering-wheel.13dd47ad73eddecbf6979d0d37466616.svg",
+    "index.html": "/portfolio/index.html",
+    "static/media/circled-check.svg": "/portfolio/static/media/circled-check.4f475a92855f7ddce4637cbef70952bf.svg",
+    "main.599092cf.css.map": "/portfolio/static/css/main.599092cf.css.map",
+    "main.dbc4c8c6.js.map": "/portfolio/static/js/main.dbc4c8c6.js.map",
+    "787.4880d76a.chunk.js.map": "/portfolio/static/js/787.4880d76a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.93918e32.css",
-    "static/js/main.a5e7150b.js"
+    "static/css/main.599092cf.css",
+    "static/js/main.dbc4c8c6.js"
   ]
 }
