@@ -5,10 +5,8 @@ import { Form } from '../components/Form';
 import { FormRow } from '../components/FormRow';
 
 export interface ShiftFormFields {
-	startHour: string;
-	startMin: string;
-	endHour: string;
-	endMin: string;
+	startTime: string;
+	endTime: string;
 }
 
 export interface ShiftFormProps {
@@ -24,8 +22,11 @@ export const ShiftForm = ({
 	subtitle,
 	title,
 }: ShiftFormProps) => {
-	const { register, handleSubmit } = useForm<ShiftFormFields>({
-		defaultValues,
+	const { handleSubmit, setValue } = useForm<ShiftFormFields>({
+		defaultValues: {
+			startTime: '09:00:00',
+			endTime: '17:00:00',
+		},
 	});
 
 	return (
@@ -34,14 +35,18 @@ export const ShiftForm = ({
 			<h4>{subtitle}</h4>
 			<FormRow>
 				<TimePicker
+					onTimeChange={(value) => setValue('startTime', value)}
 					label="Start time"
-					hourSelectProps={{ ...register('startHour') }}
-					minuteSelectProps={{ ...register('startMin') }}
+					defaultAmPm="AM"
+					defaultHour="09"
+					defaultMinute="30"
 				/>
 				<TimePicker
+					onTimeChange={(value) => setValue('endTime', value)}
 					label="End time"
-					hourSelectProps={{ ...register('endHour') }}
-					minuteSelectProps={{ ...register('endMin') }}
+					defaultAmPm="PM"
+					defaultHour="05"
+					defaultMinute="00"
 				/>
 			</FormRow>
 			<FormRow>

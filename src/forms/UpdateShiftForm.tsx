@@ -11,10 +11,8 @@ export const UpdateShiftForm = () => {
 			subtitle="This form has default values."
 			onSubmit={onSubmit}
 			defaultValues={{
-				endHour: '05',
-				endMin: '30',
-				startHour: '09',
-				startMin: '00',
+				startTime: '09:00:00',
+				endTime: '17:00:00',
 			}}
 		/>
 	);
