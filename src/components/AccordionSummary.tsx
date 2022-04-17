@@ -12,7 +12,7 @@ export const AccordionSummary = ({
 }: AccordionSummaryProps) => {
 	return (
 		<div className={styles['root']} onClick={onClick}>
-			{children}
+			<strong>{children}</strong>
 		</div>
 	);
 };

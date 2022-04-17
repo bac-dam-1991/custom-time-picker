@@ -2,16 +2,42 @@ import { Children, cloneElement, ReactElement, useReducer } from 'react';
 import styles from './Accordion.module.css';
 import clsx from 'clsx';
 import { AccordionItem, AccordionItemProps } from './AccordionItem';
-import { AccordionReducer } from './AccordionReducer';
+import {
+	AccordionReducer,
+	combineReducer,
+	MultipleAccordionsReducer,
+	PreventCloseAccordionReducer,
+	SingleAccordionReducer,
+} from './AccordionReducers';
 
 export interface AccordionProps {
 	children: ReactElement[];
+	preventClose?: boolean;
+	multiple?: boolean;
 }
 
-export const Accordion = ({ children }: AccordionProps) => {
+export const Accordion = ({
+	children,
+	preventClose,
+	multiple,
+}: AccordionProps) => {
 	const rootClasses = clsx(styles['root']);
 
-	const [openIndexes, dispatch] = useReducer(AccordionReducer, []);
+	const reducers: AccordionReducer[] = [];
+
+	if (preventClose) {
+		reducers.push(PreventCloseAccordionReducer);
+	}
+
+	if (multiple) {
+		reducers.push(MultipleAccordionsReducer);
+	} else {
+		reducers.push(SingleAccordionReducer);
+	}
+
+	const reducer = combineReducer(...reducers);
+
+	const [openIndexes, dispatch] = useReducer(reducer, [0]);
 
 	return (
 		<div className={rootClasses}>
