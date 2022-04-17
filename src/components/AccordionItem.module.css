@@ -1,7 +1,6 @@
 .root {
-  border: 1px solid #efefef;
-}
-
-.active {
-  margin-bottom: 16px;
+	border: 1px solid #efefef;
+	overflow: hidden;
+	border-radius: 4px;
+	transition: margin-bottom 300ms ease-in-out;
 }
