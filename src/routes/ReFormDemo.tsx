@@ -1,25 +1,27 @@
 import { Field } from '../reform/Field';
 import { FieldLabel } from '../reform/FieldLabel';
 import { Form } from '../reform/Form';
-import { FormValues } from '../reform/FormProvider';
+import { useForm } from '../reform/hooks/useForm';
+import { FormValues } from '../reform/interfaces/FormValues';
 
 export const ReFormDemo = () => {
 	const handleSubmit = (formValues: FormValues) => {
 		alert(JSON.stringify(formValues, null, 2));
 	};
 
+	const [form] = useForm({
+		initialValues: {
+			givenName: 'Bac',
+			familyName: 'Dam',
+			agreed: false,
+			favouriteColour: '#fefefe',
+			gender: 'other',
+		},
+	});
+
 	return (
 		<div className="root-container">
-			<Form
-				onSubmit={handleSubmit}
-				initialValues={{
-					givenName: 'Bac',
-					familyName: 'Dam',
-					agreed: false,
-					favouriteColour: '#fefefe',
-					gender: 'other',
-				}}
-			>
+			<Form onSubmit={handleSubmit} form={form}>
 				<div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
 					<Field name="givenName">
 						<FieldLabel>Given name</FieldLabel>

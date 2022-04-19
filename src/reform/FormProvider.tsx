@@ -1,13 +1,9 @@
 import { createContext, ReactNode, useContext } from 'react';
-
-export type FormValue = string | number | boolean;
-
-export interface FormValues {
-	[key: string]: FormValue;
-}
+import { FormValues } from './interfaces/FormValues';
+import { FieldValue } from './types/FieldValue';
 
 export interface FormChangeHandler {
-	value: FormValue;
+	value: FieldValue;
 	name: string;
 }
 

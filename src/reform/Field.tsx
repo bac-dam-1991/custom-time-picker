@@ -6,7 +6,8 @@ import {
 	ReactElement,
 } from 'react';
 import { FieldLabel } from './FieldLabel';
-import { FormValue, useFormContext } from './FormProvider';
+import { useFormContext } from './FormProvider';
+import { FieldValue } from './types/FieldValue';
 
 export type FieldOrientation =
 	| 'row'
@@ -49,17 +50,17 @@ export const Field = ({
 				}
 
 				return cloneElement<{
-					value: string;
+					defaultValue: string;
 					onChange?: ChangeEventHandler<HTMLInputElement>;
 					id?: string;
-					checked?: boolean;
+					defaultChecked?: boolean;
 				}>(child, {
 					...child.props,
-					value: values[name],
-					checked: values[name],
+					defaultValue: values[name],
+					defaultChecked: values[name],
 					id: name,
 					onChange: ({ target }) => {
-						let value: FormValue = target.value;
+						let value: FieldValue = target.value;
 
 						if (child.props.type === 'checkbox') {
 							value = target.checked;

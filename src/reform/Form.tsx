@@ -1,28 +1,27 @@
-import { FormEventHandler, ReactNode, useState } from 'react';
-import { FormChangeHandler, FormContext, FormValues } from './FormProvider';
+import { FormEventHandler, ReactNode } from 'react';
+import { FormChangeHandler, FormContext } from './FormProvider';
+import { FormInstance } from './interfaces/FormInstance';
+import { FormValues } from './interfaces/FormValues';
 
 export interface FormProps {
 	children: ReactNode;
+	form: FormInstance;
 	onSubmit: (formValues: FormValues) => void;
-	initialValues?: FormValues;
 }
 
-export const Form = ({ children, onSubmit, initialValues = {} }: FormProps) => {
-	const [values, setValues] = useState<FormValues>(initialValues);
-
+export const Form = ({ children, form, onSubmit }: FormProps) => {
 	const onChange = ({ value, name }: FormChangeHandler) => {
-		setValues((prevState) => {
-			return { ...prevState, [name]: value };
-		});
+		const values = { ...form.values, [name]: value };
+		form.values = values;
 	};
 
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
-		onSubmit(values);
+		onSubmit(form.values);
 	};
 
 	return (
-		<FormContext.Provider value={{ values, onChange }}>
+		<FormContext.Provider value={{ values: form.values, onChange }}>
 			<form onSubmit={handleSubmit}>{children}</form>
 		</FormContext.Provider>
 	);
