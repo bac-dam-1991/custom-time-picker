@@ -23,7 +23,7 @@ export const ShiftForm = ({
 	subtitle,
 	title,
 }: ShiftFormProps) => {
-	const matchMd = useMediaQuery({ direction: 'up', breakpoint: 'md' });
+	const matchMd = useMediaQuery({ direction: 'up', breakpoint: 'sm' });
 
 	const { handleSubmit, setValue } = useForm<ShiftFormFields>({
 		defaultValues: {

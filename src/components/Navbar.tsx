@@ -7,7 +7,7 @@ import { useState } from 'react';
 export const Navbar = () => {
 	const [open, setOpen] = useState(false);
 
-	const matchMd = useMediaQuery({ direction: 'up', breakpoint: 'md' });
+	const matchSm = useMediaQuery({ direction: 'up', breakpoint: 'sm' });
 
 	const dropDownClasses = clsx(
 		styles['dropdown'],
@@ -35,8 +35,8 @@ export const Navbar = () => {
 	};
 
 	return (
-		<nav>
-			{matchMd ? (
+		<nav className={styles['root']}>
+			{matchSm ? (
 				<Links />
 			) : (
 				<>

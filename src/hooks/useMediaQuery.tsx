@@ -35,20 +35,20 @@ export const useMediaQuery = ({
 		const mediaAttribute = MediaQueryMap.get(direction);
 		const _breakpoint = breakpointsMap.get(breakpoint);
 
-		const matchWindow = () => {
-			const { matches } = window.matchMedia(
-				`(${mediaAttribute}: ${_breakpoint}px)`
-			);
+		const queryList = window.matchMedia(
+			`(${mediaAttribute}: ${_breakpoint}px)`
+		);
 
-			setMatch(matches);
+		const updateMatch = () => {
+			setMatch(queryList.matches);
 		};
 
-		window.onresize = matchWindow;
+		updateMatch();
 
-		matchWindow();
+		queryList.addEventListener('change', updateMatch);
 
 		return () => {
-			window.onresize = () => {};
+			queryList.removeEventListener('change', updateMatch);
 		};
 	}, [breakpoint, direction]);
 
