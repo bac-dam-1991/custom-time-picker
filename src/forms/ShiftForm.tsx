@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import { Button } from '../components/Button';
 import { Form } from '../components/Form';
 import { FormRow } from '../components/FormRow';
+import { useMediaQuery } from '../hooks/useMediaQuery';
 
 export interface ShiftFormFields {
 	startTime: string;
@@ -22,6 +23,8 @@ export const ShiftForm = ({
 	subtitle,
 	title,
 }: ShiftFormProps) => {
+	const matchMd = useMediaQuery({ direction: 'up', breakpoint: 'md' });
+
 	const { handleSubmit, setValue } = useForm<ShiftFormFields>({
 		defaultValues: {
 			startTime: '09:00:00',
@@ -33,7 +36,7 @@ export const ShiftForm = ({
 		<Form onSubmit={handleSubmit(onSubmit)}>
 			<h3>{title}</h3>
 			<h4>{subtitle}</h4>
-			<FormRow>
+			<FormRow style={{ flexDirection: matchMd ? 'row' : 'column' }}>
 				<TimePicker
 					onTimeChange={(value) => setValue('startTime', value)}
 					label="Start time"
@@ -41,6 +44,7 @@ export const ShiftForm = ({
 					defaultHour="09"
 					defaultMinute="30"
 				/>
+
 				<TimePicker
 					onTimeChange={(value) => setValue('endTime', value)}
 					label="End time"

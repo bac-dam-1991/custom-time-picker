@@ -1,23 +1,23 @@
 .form-root {
-  display: flex;
-  gap: 8px;
+	display: flex;
+	gap: 8px;
 }
 
 .form-root_vertical {
-  flex-direction: column;
+	flex-direction: column;
 }
 
 .form-root_horizontal {
-  flex-direction: row;
+	flex-direction: row;
 }
 
 .form-standard {
-  width: 400px;
-  margin: auto;
+	width: 100%;
+	margin: auto;
 }
 
 .form-root > h4:first-of-type {
-  font-weight: 400;
-  font-size: 0.75rem;
-  color: #999999;
+	font-weight: 400;
+	font-size: 0.75rem;
+	color: #999999;
 }

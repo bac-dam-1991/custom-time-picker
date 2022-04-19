@@ -3,6 +3,7 @@
 		Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	padding: 0;
 	margin: 0;
+	box-sizing: border-box;
 }
 
 pre,
@@ -16,19 +17,24 @@ code {
 nav {
 	display: flex;
 	border-bottom: 1px solid lightgray;
+	height: 54px;
+	align-items: center;
+	z-index: 100;
 }
 
 nav a {
-	padding: 12px 8px;
 	text-decoration: none;
 	color: black;
-	height: 100%;
 	transition: 0.2s;
+	font-size: 1rem;
+	line-height: 1rem;
+	display: flex;
+	align-items: center;
+	padding: 0 16px;
 }
 
 nav a:hover {
-	background-color: lightgray;
-	color: white;
+	background-color: #efefef;
 }
 
 .root-container {

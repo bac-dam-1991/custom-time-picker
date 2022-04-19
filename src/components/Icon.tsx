@@ -23,5 +23,9 @@ export const Icon = ({ name, style }: IconProps) => {
 	const SelectedIcon = IconMap.get(name) as FunctionComponent<
 		SVGProps<SVGSVGElement>
 	>;
-	return <SelectedIcon style={style} />;
+	return (
+		<span style={style}>
+			<SelectedIcon />
+		</span>
+	);
 };
