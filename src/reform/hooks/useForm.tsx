@@ -8,7 +8,7 @@ export interface UseFormProps<T extends FormValues = {}> {
 
 export const useForm = <T extends FormValues = {}>({
 	initialValues,
-}: UseFormProps<T>): [FormInstance] => {
+}: UseFormProps<T> = {}): [FormInstance] => {
 	const formRef = useRef<FormInstance>({
 		values: initialValues || {},
 	});

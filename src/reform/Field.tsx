@@ -4,9 +4,11 @@ import {
 	cloneElement,
 	CSSProperties,
 	ReactElement,
+	useState,
 } from 'react';
 import { FieldLabel } from './FieldLabel';
 import { useFormContext } from './FormProvider';
+import { FormValues } from './interfaces/FormValues';
 import { FieldValue } from './types/FieldValue';
 
 export type FieldOrientation =
@@ -27,9 +29,13 @@ export const Field = ({
 	style,
 	orientation = 'column',
 }: FieldProps) => {
-	const { values, onChange } = useFormContext();
+	const { form } = useFormContext();
 
 	const childrenElements = Array.isArray(children) ? children : [children];
+
+	const [value, setValue] = useState<FieldValue>(
+		(form.values as FormValues)[name] as FieldValue
+	);
 
 	return (
 		<div
@@ -43,30 +49,27 @@ export const Field = ({
 		>
 			{Children.map(childrenElements, (child) => {
 				if (child.type === FieldLabel) {
-					return cloneElement<{ name?: string }>(child, {
+					return cloneElement(child, {
 						...child.props,
 						name,
 					});
 				}
 
 				return cloneElement<{
-					defaultValue: string;
 					onChange?: ChangeEventHandler<HTMLInputElement>;
-					id?: string;
-					defaultChecked?: boolean;
 				}>(child, {
 					...child.props,
-					defaultValue: values[name],
-					defaultChecked: values[name],
+					name,
 					id: name,
+					value: value || '',
+					checked: !!value,
 					onChange: ({ target }) => {
 						let value: FieldValue = target.value;
-
 						if (child.props.type === 'checkbox') {
 							value = target.checked;
 						}
-
-						onChange({ value, name });
+						setValue(value);
+						form.values = { ...form.values, [name]: value };
 					},
 				});
 			})}

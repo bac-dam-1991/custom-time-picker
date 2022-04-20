@@ -1,5 +1,5 @@
 import { FormEventHandler, ReactNode } from 'react';
-import { FormChangeHandler, FormContext } from './FormProvider';
+import { FormContext } from './FormProvider';
 import { FormInstance } from './interfaces/FormInstance';
 import { FormValues } from './interfaces/FormValues';
 
@@ -10,18 +10,13 @@ export interface FormProps {
 }
 
 export const Form = ({ children, form, onSubmit }: FormProps) => {
-	const onChange = ({ value, name }: FormChangeHandler) => {
-		const values = { ...form.values, [name]: value };
-		form.values = values;
-	};
-
 	const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault();
 		onSubmit(form.values);
 	};
 
 	return (
-		<FormContext.Provider value={{ values: form.values, onChange }}>
+		<FormContext.Provider value={{ form }}>
 			<form onSubmit={handleSubmit}>{children}</form>
 		</FormContext.Provider>
 	);

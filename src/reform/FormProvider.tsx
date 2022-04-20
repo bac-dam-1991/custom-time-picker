@@ -1,20 +1,12 @@
 import { createContext, ReactNode, useContext } from 'react';
-import { FormValues } from './interfaces/FormValues';
-import { FieldValue } from './types/FieldValue';
-
-export interface FormChangeHandler {
-	value: FieldValue;
-	name: string;
-}
+import { FormInstance } from './interfaces/FormInstance';
 
 export interface FormContextProps {
-	values: FormValues;
-	onChange: (value: FormChangeHandler) => void;
+	form: FormInstance;
 }
 
 export const FormContext = createContext<FormContextProps>({
-	values: {},
-	onChange: (value: FormChangeHandler) => {},
+	form: { values: {} },
 });
 
 export interface FormProviderProps {

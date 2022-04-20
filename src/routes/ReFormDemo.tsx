@@ -1,4 +1,5 @@
 import { Field } from '../reform/Field';
+import { FieldGroup } from '../reform/FieldGroup';
 import { FieldLabel } from '../reform/FieldLabel';
 import { Form } from '../reform/Form';
 import { useForm } from '../reform/hooks/useForm';
@@ -11,11 +12,10 @@ export const ReFormDemo = () => {
 
 	const [form] = useForm({
 		initialValues: {
+			languages: ['java'],
 			givenName: 'Bac',
 			familyName: 'Dam',
-			agreed: false,
-			favouriteColour: '#fefefe',
-			gender: 'other',
+			agreed: true,
 		},
 	});
 
@@ -38,6 +38,13 @@ export const ReFormDemo = () => {
 						<FieldLabel>Terms and conditions</FieldLabel>
 					</Field>
 
+					<FieldGroup name="languages">
+						<FieldLabel>Languages</FieldLabel>
+						<Checkbox value="javascript" label="Javascript" />
+						<Checkbox value="java" label="Java" />
+						<Checkbox value="csharp" label="C#" />
+					</FieldGroup>
+
 					<Field name="gender">
 						<FieldLabel>Gender</FieldLabel>
 						<select>
@@ -55,6 +62,31 @@ export const ReFormDemo = () => {
 					<button type="submit">Submit</button>
 				</div>
 			</Form>
+		</div>
+	);
+};
+
+const Checkbox = ({
+	value,
+	label,
+	onChange,
+	checked,
+}: {
+	onChange?: (value: string) => void;
+	label: string;
+	value: string;
+	checked?: boolean;
+}) => {
+	return (
+		<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+			<input
+				type="checkbox"
+				value={value}
+				checked={checked}
+				id={value}
+				onChange={() => onChange?.(value)}
+			/>
+			<label htmlFor={value}>{label}</label>
 		</div>
 	);
 };
