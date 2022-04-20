@@ -51,7 +51,7 @@ export const Field = ({
 				if (child.type === FieldLabel) {
 					return cloneElement(child, {
 						...child.props,
-						name,
+						htmlFor: name,
 					});
 				}
 

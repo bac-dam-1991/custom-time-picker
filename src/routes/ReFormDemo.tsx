@@ -16,6 +16,7 @@ export const ReFormDemo = () => {
 			givenName: 'Bac',
 			familyName: 'Dam',
 			agreed: true,
+			atsi: 'aboriginal',
 		},
 	});
 
@@ -38,11 +39,22 @@ export const ReFormDemo = () => {
 						<FieldLabel>Terms and conditions</FieldLabel>
 					</Field>
 
-					<FieldGroup name="languages">
+					<FieldGroup name="languages" multiple>
 						<FieldLabel>Languages</FieldLabel>
-						<Checkbox value="javascript" label="Javascript" />
-						<Checkbox value="java" label="Java" />
-						<Checkbox value="csharp" label="C#" />
+						<Checkable type="checkbox" value="javascript" label="Javascript" />
+						<Checkable type="checkbox" value="java" label="Java" />
+						<Checkable type="checkbox" value="csharp" label="C#" />
+					</FieldGroup>
+
+					<FieldGroup name="atsi">
+						<FieldLabel>ATSI</FieldLabel>
+						<Checkable type="radio" value="aboriginal" label="Aboriginal" />
+						<Checkable
+							type="radio"
+							value="torres-strait-islander"
+							label="Torres Strait Islander"
+						/>
+						<Checkable type="radio" value="none" label="None" />
 					</FieldGroup>
 
 					<Field name="gender">
@@ -66,27 +78,34 @@ export const ReFormDemo = () => {
 	);
 };
 
-const Checkbox = ({
-	value,
-	label,
-	onChange,
-	checked,
-}: {
+interface CheckableProps {
 	onChange?: (value: string) => void;
 	label: string;
 	value: string;
 	checked?: boolean;
-}) => {
+	name?: string;
+	type?: 'checkbox' | 'radio';
+}
+
+const Checkable = ({
+	value,
+	label,
+	onChange,
+	checked,
+	name,
+	type,
+}: CheckableProps) => {
 	return (
 		<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
 			<input
-				type="checkbox"
+				type={type}
 				value={value}
 				checked={checked}
 				id={value}
 				onChange={() => onChange?.(value)}
+				name={name}
 			/>
-			<label htmlFor={value}>{label}</label>
+			<FieldLabel htmlFor={value}>{label}</FieldLabel>
 		</div>
 	);
 };

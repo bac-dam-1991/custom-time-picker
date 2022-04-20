@@ -2,13 +2,13 @@ import { CSSProperties, ReactNode } from 'react';
 
 export interface FieldLabelProps {
 	children: ReactNode;
-	name?: string;
+	htmlFor?: string;
 	style?: CSSProperties;
 }
 
-export const FieldLabel = ({ children, name, style }: FieldLabelProps) => {
+export const FieldLabel = ({ children, htmlFor, style }: FieldLabelProps) => {
 	return (
-		<label htmlFor={name} style={{ fontSize: '0.875rem', ...style }}>
+		<label htmlFor={htmlFor} style={{ fontSize: '0.875rem', ...style }}>
 			{children}
 		</label>
 	);

@@ -13,9 +13,10 @@ export interface FieldGroupProps {
 	children: ReactElement[];
 	name: string;
 	style?: CSSProperties;
+	multiple?: boolean;
 }
 
-export const FieldGroup = ({ children, name }: FieldGroupProps) => {
+export const FieldGroup = ({ children, name, multiple }: FieldGroupProps) => {
 	const { form } = useFormContext();
 	const [fieldValue, setFieldValue] = useState<string[]>(
 		((form.values as FormValues)[name] as string[]) || []
@@ -34,11 +35,17 @@ export const FieldGroup = ({ children, name }: FieldGroupProps) => {
 					id: name,
 					checked: fieldValue.includes(child.props.value),
 					onChange: (value: string) => {
-						const values = fieldValue.includes(value)
-							? fieldValue.filter((v) => v !== value)
-							: [...fieldValue, value];
+						let values: string[] = [];
+						if (multiple) {
+							values = fieldValue.includes(value)
+								? fieldValue.filter((v) => v !== value)
+								: [...fieldValue, value];
+							form.values = { ...form.values, [name]: values };
+						} else {
+							values = [value];
+							form.values = { ...form.values, [name]: value };
+						}
 						setFieldValue(values);
-						form.values = { ...form.values, [name]: values };
 					},
 				});
 			})}
