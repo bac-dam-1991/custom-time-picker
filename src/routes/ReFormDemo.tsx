@@ -1,3 +1,4 @@
+import { Checkable } from '../components/Checkable';
 import { Field } from '../reform/Field';
 import { FieldGroup } from '../reform/FieldGroup';
 import { FieldLabel } from '../reform/FieldLabel';
@@ -12,11 +13,21 @@ export const ReFormDemo = () => {
 
 	const [form] = useForm({
 		initialValues: {
-			languages: ['java'],
 			givenName: 'Bac',
 			familyName: 'Dam',
-			agreed: true,
+			attributes: {
+				languages: ['java'],
+			},
+			legal: {
+				agreed: true,
+			},
 			atsi: 'aboriginal',
+			gender: 'other',
+			other: {
+				preferences: {
+					favouriteColour: '#ffffff',
+				},
+			},
 		},
 	});
 
@@ -24,22 +35,22 @@ export const ReFormDemo = () => {
 		<div className="root-container">
 			<Form onSubmit={handleSubmit} form={form}>
 				<div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-					<Field name="givenName">
+					<Field name={['givenName']}>
 						<FieldLabel>Given name</FieldLabel>
 						<input />
 					</Field>
 
-					<Field name="familyName">
+					<Field name={['familyName']}>
 						<FieldLabel>Family name</FieldLabel>
 						<input />
 					</Field>
 
-					<Field name="agreed" orientation="row">
+					<Field name={['legal', 'agreed']} orientation="row">
 						<input type="checkbox" />
 						<FieldLabel>Terms and conditions</FieldLabel>
 					</Field>
 
-					<FieldGroup name="languages" multiple>
+					<FieldGroup name={['attributes', 'languages']} multiple>
 						<FieldLabel>Languages</FieldLabel>
 						<Checkable type="checkbox" value="javascript" label="Javascript" />
 						<Checkable type="checkbox" value="java" label="Java" />
@@ -66,7 +77,7 @@ export const ReFormDemo = () => {
 						</select>
 					</Field>
 
-					<Field name="favouriteColour">
+					<Field name={['other', 'preferences', 'favouriteColour']}>
 						<FieldLabel>Favourite colour</FieldLabel>
 						<input type="color" />
 					</Field>
@@ -74,38 +85,6 @@ export const ReFormDemo = () => {
 					<button type="submit">Submit</button>
 				</div>
 			</Form>
-		</div>
-	);
-};
-
-interface CheckableProps {
-	onChange?: (value: string) => void;
-	label: string;
-	value: string;
-	checked?: boolean;
-	name?: string;
-	type?: 'checkbox' | 'radio';
-}
-
-const Checkable = ({
-	value,
-	label,
-	onChange,
-	checked,
-	name,
-	type,
-}: CheckableProps) => {
-	return (
-		<div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-			<input
-				type={type}
-				value={value}
-				checked={checked}
-				id={value}
-				onChange={() => onChange?.(value)}
-				name={name}
-			/>
-			<FieldLabel htmlFor={value}>{label}</FieldLabel>
 		</div>
 	);
 };

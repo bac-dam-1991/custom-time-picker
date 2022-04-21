@@ -10,6 +10,9 @@ import { FieldLabel } from './FieldLabel';
 import { useFormContext } from './FormProvider';
 import { FormValues } from './interfaces/FormValues';
 import { FieldValue } from './types/FieldValue';
+import { NamePath } from './types/NamePath';
+import { getNamePathValue } from './util';
+import _ from 'lodash';
 
 export type FieldOrientation =
 	| 'row'
@@ -18,7 +21,7 @@ export type FieldOrientation =
 	| 'row-reverse';
 export interface FieldProps {
 	children: ReactElement[] | ReactElement;
-	name: string;
+	name: NamePath;
 	style?: CSSProperties;
 	orientation?: FieldOrientation;
 }
@@ -33,9 +36,8 @@ export const Field = ({
 
 	const childrenElements = Array.isArray(children) ? children : [children];
 
-	const [value, setValue] = useState<FieldValue>(
-		(form.values as FormValues)[name] as FieldValue
-	);
+	const val = getNamePathValue(form.values as FormValues, name);
+	const [value, setValue] = useState<FieldValue>(val);
 
 	return (
 		<div
@@ -69,7 +71,7 @@ export const Field = ({
 							value = target.checked;
 						}
 						setValue(value);
-						form.values = { ...form.values, [name]: value };
+						form.values = _.set({ ...form.values }, name, value);
 					},
 				});
 			})}
