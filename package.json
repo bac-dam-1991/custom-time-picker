@@ -4,7 +4,7 @@
   "private": true,
   "homepage": "http://bac-dam-1991.github.io/portfolio",
   "dependencies": {
-    "@bac-dam-1991/re-form": "^1.1.7",
+    "@bac-dam-1991/reform": "^17.0.2",
     "clsx": "^1.1.1",
     "lodash": "^4.17.21",
     "react": "^17.0.2",
