@@ -1,10 +1,12 @@
+import {
+	Field,
+	Form,
+	FormValues,
+	useForm,
+	FieldGroup,
+	FieldLabel,
+} from '@bac-dam-1991/re-form';
 import { Checkable } from '../components/Checkable';
-import { Field } from '../reform/Field';
-import { FieldGroup } from '../reform/FieldGroup';
-import { FieldLabel } from '../reform/FieldLabel';
-import { Form } from '../reform/Form';
-import { useForm } from '../reform/hooks/useForm';
-import { FormValues } from '../reform/interfaces/FormValues';
 
 export const ReFormDemo = () => {
 	const handleSubmit = (formValues: FormValues) => {
