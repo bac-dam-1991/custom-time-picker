@@ -1,4 +1,4 @@
-import { FieldLabel } from '@bac-dam-1991/reform';
+import { FieldLabel } from '@btdtech/reform';
 
 export interface CheckableProps {
 	onChange?: (value: string) => void;

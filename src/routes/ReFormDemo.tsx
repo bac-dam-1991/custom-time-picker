@@ -5,7 +5,7 @@ import {
 	useForm,
 	FieldGroup,
 	FieldLabel,
-} from '@bac-dam-1991/reform';
+} from '@btdtech/reform';
 import { Checkable } from '../components/Checkable';
 
 export const ReFormDemo = () => {
